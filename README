@@ -1,0 +1,15 @@
+README
+
+Este es un script para transformar los últimos movimientos de tu cuenta corriente y movimientos no facturados (nacionales) de tus tarjetas del banco de chile a un csv soportado por YNAB (You Need a Budget).
+
+Sigue las siguientes instrucciones para utilizar este repositorio:
+
+Descarga el archivo xls de los últimos movimientos de tu cuenta corriente.
+Descarga el archivo xls de los movimientos no facturados de tu tarjeta de crédito.
+Coloca ambos archivos xls en la carpeta `cartolas`.
+Instala las dependencias (`pip3 install -r requirements.txt`)
+Ejecuta el script `python3 budgeter.py`.
+Importa los archivos generados en `ynab_csvs` en sus respectivas cuentas corrientes y de crédito en YNAB.
+Nota: Si ya hay archivos generados en `ynab_csvs`, el script sólo agregará las nuevas transacciones (basado en diffs y ultimas fechas que se guardan en .last_cc_date y .last_tc_date). Esto significa que puedes descargar 100 transacciones diariamente sin preocuparte por duplicados.
+
+Dependencias: Este proyecto depende de las siguientes bibliotecas de Python: pandas, xlrd. Por favor, asegúrate de tener estas dependencias instaladas antes de ejecutar el notebook.
