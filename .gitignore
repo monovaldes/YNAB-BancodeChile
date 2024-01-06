@@ -1,5 +1,5 @@
 cartolas/*.xls
-ynab_csvs/*.csv
-ynab_csvs/.last_cc_date
-ynab_csvs/.last_tc_date
+rust/target
+rust/output.csv
+python/output.csv
 .DS_Store
