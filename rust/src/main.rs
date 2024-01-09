@@ -26,8 +26,7 @@ pub fn main() -> Result<(), Box<dyn Error>> {
         let mut record: Vec<String> = vec![];
 
         for (j, cell) in row.iter().enumerate() {
-            if j == 2 { continue; } // Skip column 2
-
+            if j == 2 || j == 5 { continue; } // Skip columns 2 and 5
             let cell = cell.to_string();
 
             if cell.contains("SALDO INICIAL") || cell.contains("SALDO FINAL") {
@@ -41,12 +40,20 @@ pub fn main() -> Result<(), Box<dyn Error>> {
                 record.push(cell);
             }
         }
+        // add empty string on column 2
+        record.insert(2, "".to_string());
 
         records.push(record);
     }
 
     // Sort records by date
     records.sort_by(|a, b| a[0].cmp(&b[0]));
+
+    // return if no records
+    if records.len() == 0 { return Ok(()); }
+
+    // write headers
+    writer.write_record(&["Date","Payee","Memo","Outflow","Inflow"])?;
 
     // Write records to CSV
     for record in records {
